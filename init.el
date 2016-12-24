@@ -32,7 +32,8 @@
     magit
     yasnippet
     js2-mode
-    scss-mode))
+    scss-mode
+    go-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
