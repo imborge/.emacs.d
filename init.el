@@ -53,8 +53,8 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
 ;; Skip splash screen
-(setq inhibit-splash-screen t      ;; Skip splash screen
-      initial-scratch-message nil) ;; Empty scratch message
+;; (setq inhibit-splash-screen t      ;; Skip splash screen
+;;       initial-scratch-message nil) ;; Empty scratch message
 
 ;;;;
 ;; Customization
