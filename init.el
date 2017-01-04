@@ -11,8 +11,9 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-;; (add-to-list 'package-pinned-packages
-;;              '("cider" . "melpa-stable") t)
+(add-to-list 'package-pinned-packages
+             '("cider" . "melpa-stable") t)
+
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -33,6 +34,9 @@
     tagedit
     magit
     yasnippet
+    clojure-mode
+    clojure-mode-extra-font-locking
+    cider
     elpy
     js2-mode
     scss-mode
@@ -65,6 +69,7 @@
 (load "editing.el")
 (load "misc.el")
 (load "elisp-editing.el")
+(load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-css.el")
 
