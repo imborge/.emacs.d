@@ -34,8 +34,10 @@
     tagedit
     magit
     yasnippet
+    hydra
     clojure-mode
     clojure-mode-extra-font-locking
+    clj-refactor
     cider
     elpy
     js2-mode
