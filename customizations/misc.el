@@ -10,3 +10,8 @@
 
 ;; Go straight to scratch buffer on startup
 (setq inhibit-startup-message t)
+
+(global-unset-key "\C-z")
+
+(require 'which-key)
+(which-key-mode)

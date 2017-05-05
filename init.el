@@ -31,6 +31,7 @@
     smex
     paredit
     projectile
+    which-key
     tagedit
     magit
     yasnippet
@@ -42,7 +43,10 @@
     elpy
     js2-mode
     scss-mode
-    go-mode))
+    go-mode
+    haskell-mode
+    markdown-mode
+    yaml-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
