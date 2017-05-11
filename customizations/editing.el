@@ -76,6 +76,7 @@
 
 
 ;; duplicate line
+;; http://stackoverflow.com/a/88828
 (defun duplicate-line ()
   (interactive)
   (move-beginning-of-line 1)
