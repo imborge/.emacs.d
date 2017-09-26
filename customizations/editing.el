@@ -87,3 +87,8 @@
   (yank))
 
 (global-set-key (kbd "C-c C-d") 'duplicate-line)
+
+;; code completion
+(global-company-mode)
+(global-set-key (kbd "M-TAB") #'company-complete)
+(setq company-idle-delay 0)

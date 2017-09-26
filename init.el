@@ -36,6 +36,7 @@
     magit
     yasnippet
     hydra
+    company
     clojure-mode
     clojure-mode-extra-font-locking
     clj-refactor
