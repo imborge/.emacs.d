@@ -7,7 +7,7 @@
 ;; Remove scroll-bar, tool-bar and menu-bar
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 
 ;; Show line numbers
 (global-linum-mode)
