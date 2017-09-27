@@ -51,7 +51,8 @@
     haskell-mode
     markdown-mode
     yaml-mode
-    restclient))
+    restclient
+    ace-jump-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

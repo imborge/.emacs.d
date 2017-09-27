@@ -92,3 +92,5 @@
 (global-company-mode)
 (global-set-key (kbd "M-TAB") #'company-complete)
 (setq company-idle-delay 0)
+
+(global-set-key (kbd "C-ø") 'ace-jump-mode)
