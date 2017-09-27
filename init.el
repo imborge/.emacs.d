@@ -50,7 +50,8 @@
     go-mode
     haskell-mode
     markdown-mode
-    yaml-mode))
+    yaml-mode
+    restclient))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
