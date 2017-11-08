@@ -50,6 +50,7 @@
     go-mode
     haskell-mode
     markdown-mode
+    elm-mode
     yaml-mode
     restclient
     ace-jump-mode))
