@@ -86,6 +86,8 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-css.el")
+(load "setup-org.el")
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
