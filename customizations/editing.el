@@ -81,3 +81,6 @@
 (setq company-idle-delay 0)
 
 (global-set-key (kbd "C-ø") 'ace-jump-mode)
+
+;; Needed for dead keys to work:
+(require 'iso-transl)
