@@ -33,6 +33,7 @@
     paredit
     projectile
     which-key
+    rainbow-delimiters
     tagedit
     magit
     yasnippet
