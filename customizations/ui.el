@@ -74,3 +74,7 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; set font
+(add-to-list 'default-frame-alist '(font . "Iosevka Term"))
+(set-face-attribute 'default t :font "Iosevka Term")
