@@ -75,20 +75,6 @@
 ;; yasnippet
 (yas-global-mode 1)
 
-
-;; duplicate line
-;; http://stackoverflow.com/a/88828
-(defun duplicate-line ()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank))
-
-(global-set-key (kbd "C-c C-d") 'duplicate-line)
-
 ;; code completion
 (global-company-mode)
 (global-set-key (kbd "M-TAB") #'company-complete)
