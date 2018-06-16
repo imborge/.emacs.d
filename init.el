@@ -89,6 +89,7 @@
 (load "ui.el")
 (load "editing.el")
 (load "misc.el")
+(load "git.el")
 (load "elisp-editing.el")
 (load "setup-clojure.el")
 (load "setup-js.el")
