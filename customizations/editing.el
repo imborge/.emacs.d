@@ -84,3 +84,9 @@
 
 ;; Needed for dead keys to work:
 (require 'iso-transl)
+
+;; evil
+(setq evil-toggle-key "C-`")
+(require 'evil)
+(evil-mode 1)
+(global-unset-key (kbd "C-z"))

@@ -54,7 +54,8 @@
     elm-mode
     yaml-mode
     restclient
-    ace-jump-mode))
+    ace-jump-mode
+    evil))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
