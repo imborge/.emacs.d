@@ -60,6 +60,12 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(defvar predicate nil)
+(defvar inherit-input-method nil)
+(defvar ido-cur-item nil)
+(defvar ido-default-item nil)
+(defvar ido-cur-list nil)
+
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
 ;;
