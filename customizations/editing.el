@@ -90,3 +90,4 @@
 (require 'evil)
 (evil-mode 1)
 (global-unset-key (kbd "C-z"))
+(evil-global-set-key 'motion (kbd "TAB") indent-region-function)
