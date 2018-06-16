@@ -84,3 +84,7 @@
 
 ;; Needed for dead keys to work:
 (require 'iso-transl)
+
+;; evil
+(require 'evil)
+(evil-mode 1)
