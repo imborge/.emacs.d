@@ -55,7 +55,8 @@
     yaml-mode
     restclient
     ace-jump-mode
-    evil))
+    evil
+    dashboard))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -91,6 +92,7 @@
 (load "misc.el")
 (load "git.el")
 (load "elisp-editing.el")
+(load "setup-dashboard.el")
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-css.el")
