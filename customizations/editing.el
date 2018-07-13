@@ -89,5 +89,8 @@
 (setq evil-toggle-key "C-`")
 (require 'evil)
 (evil-mode 1)
-(global-unset-key (kbd "C-z"))
 (evil-global-set-key 'motion (kbd "TAB") indent-region-function)
+
+;; Unbind keys to suspend emacs
+(global-unset-key (kbd "C-x C-z"))
+(global-unset-key (kbd "C-z"))
