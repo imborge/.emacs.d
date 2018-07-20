@@ -97,7 +97,7 @@
 (load "setup-js.el")
 (load "setup-css.el")
 (load "setup-org.el")
-
+(load "setup-haskell.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
