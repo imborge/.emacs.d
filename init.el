@@ -56,6 +56,8 @@
     restclient
     ace-jump-mode
     evil
+    psc-ide
+    purescript-mode
     dashboard))
 
 (dolist (p my-packages)
@@ -98,6 +100,7 @@
 (load "setup-css.el")
 (load "setup-org.el")
 (load "setup-haskell.el")
+(load "setup-purescript.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
