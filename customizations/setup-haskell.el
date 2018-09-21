@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+
 (defun add-language-pragma ()
   (interactive)
   (goto-char 0) ;; Go to start of file
@@ -18,4 +20,4 @@
 
 (add-hook 'haskell-mode-hook
   (lambda ()
-    (local-set-key (kbd "C-x C-å s"))))
+    (local-set-key (kbd "C-x C-å s") 'add-overloaded-strings)))
