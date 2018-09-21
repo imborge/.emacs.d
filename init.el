@@ -55,7 +55,7 @@
     yaml-mode
     restclient
     ace-jump-mode
-    evil
+    ;; evil
     psc-ide
     purescript-mode
     dashboard))
