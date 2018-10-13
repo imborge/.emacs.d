@@ -7,6 +7,7 @@
       ido-auto-merge-work-directories-length -1
       ido-create-new-buffer 'always
       ido-use-filename-at-point nil
+      ido-use-virtual-buffers t ;; Includes buffer names of recently open files, even if they're not open now
       ido-max-prospects 10)
 
 ;; Better flex matching between words
