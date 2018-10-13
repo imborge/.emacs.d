@@ -1,117 +1,96 @@
-;;;;
-;; Packages
-;;;;
-
-;; Define package repositories
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-;; (add-to-list 'package-archives
-             ;; '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-
-(add-to-list 'package-pinned-packages
-             '("cider" . "melpa-stable") t)
-
-
-;; Load and activate emacs packages. Do this first so that the
-;; packages are loaded before you start trying to modify them.
-;; This also sets the load path.
 (package-initialize)
 
-;; Download the ELPA archive description if needed.
-;; This informs Emacs about the latest versions of all packages, and
-;; makes them available for download.
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; Better defaults
+(add-to-list 'load-path
+             (expand-file-name "better-defaults" user-emacs-directory))
 
-(defvar my-packages
-  '(ido-ubiquitous
-    smex
-    paredit
-    projectile
-    which-key
-    rainbow-delimiters
-    tagedit
-    magit
-    yasnippet
-    hydra
-    company
-    spacemacs-theme
-    spaceline
-    clojure-mode
-    clojure-mode-extra-font-locking
-    clj-refactor
-    cider
-    elpy
-    js2-mode
-    scss-mode
-    go-mode
-    haskell-mode
-    intero
-    markdown-mode
-    elm-mode
-    yaml-mode
-    restclient
-    ace-jump-mode
-    ;; evil
-    psc-ide
-    purescript-mode
-    dashboard))
+(require 'better-defaults)
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+;; No splash screen
+(setq inhibit-startup-message t)
 
-(defvar predicate nil)
-(defvar inherit-input-method nil)
-(defvar ido-cur-item nil)
-(defvar ido-default-item nil)
-(defvar ido-cur-list nil)
+;; Set path to deps
+(setq site-lisp-dir
+      (expand-file-name "site-lisp" user-emacs-directory))
 
-;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-;; to load them.
-;;
-;; For example, if you download yaml-mode.el to ~/emacs.d/vendor,
-;; then you can add the following code to this file:
-;;
-;; (require 'yaml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-to-list 'load-path "~/.emacs.d/vendor")
+(setq settings-dir
+      (expand-file-name "settings" user-emacs-directory))
 
-;; Skip splash screen
-;; (setq inhibit-splash-screen t      ;; Skip splash screen
-;;       initial-scratch-message nil) ;; Empty scratch message
 
-;;;;
-;; Customization
-;;;;
-(add-to-list 'load-path "~/.emacs.d/customizations")
-(load "navigation.el")
-(load "ui.el")
-(load "editing.el")
-(load "misc.el")
-(load "git.el")
-(load "elisp-editing.el")
-(load "setup-dashboard.el")
-(load "setup-clojure.el")
-(load "setup-js.el")
-(load "setup-css.el")
-(load "setup-org.el")
-(load "setup-haskell.el")
-(load "setup-purescript.el")
+;; Set up load path
+(add-to-list 'load-path settings-dir)
+(add-to-list 'load-path site-lisp-dir)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (scss-mode js2-mode tagedit smex projectile magit))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+;; Setup appearance early
+(require 'appearance)
+
+;; Settings for currently logged in user
+(setq user-settings-dir
+      (concat user-emacs-directory "users/" user-login-name))
+(add-to-list 'load-path user-settings-dir)
+
+;; Save point position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+;; Are we on a mac?
+(setq is-mac (equal system-type 'darwin))
+
+;; Setup packages
+(require 'setup-package)
+
+;; Install extensions if they are missing
+(defun init--install-packages ()
+  (packages-install
+   '(
+     ace-jump-mode
+     cider
+     clojure-mode
+     clojure-mode-extra-font-locking
+     css-eldoc
+     dash
+     expand-region
+     flycheck
+     haskell-mode
+     magit
+     move-text
+     paredit
+     ;;projectile
+     rainbow-delimiters
+     restclient
+     s
+     smartparens
+     smex
+     spacemacs-theme
+     which-key
+     yasnippet)))
+
+(condition-case nil
+    (init--install-packages)
+  (error
+   (package-refresh-contents)
+   (init--install-packages)))
+
+;; which-key
+(require 'which-key)
+(which-key-mode)
+
+;; Setup extensions
+(require 'setup-paredit)
+
+;; Functions (load all files in defuns-dir)
+(setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
+(dolist (file (directory-files defuns-dir t "\\w+"))
+  (when (file-regular-p file)
+    (load file)))
+
+;; Setup key bindings
+(require 'key-bindings)
+
+(require 'smex)
+(smex-initialize)
