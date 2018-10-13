@@ -21,3 +21,5 @@
 (add-hook 'haskell-mode-hook
   (lambda ()
     (local-set-key (kbd "C-x C-å s") 'add-overloaded-strings)))
+
+(add-hook 'haskell-mode-hook 'intero-mode)

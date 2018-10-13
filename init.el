@@ -50,6 +50,7 @@
     scss-mode
     go-mode
     haskell-mode
+    intero
     markdown-mode
     elm-mode
     yaml-mode
