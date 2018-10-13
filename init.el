@@ -49,14 +49,21 @@
   (packages-install
    '(
      ace-jump-mode
+     browse-kill-ring
      cider
      clojure-mode
      clojure-mode-extra-font-locking
      css-eldoc
      dash
+     diff-hl
      expand-region
      flycheck
+     flx
+     flx-ido
      haskell-mode
+     ido-at-point
+     ido-completing-read+
+     ido-vertical-mode
      magit
      move-text
      paredit
@@ -81,6 +88,8 @@
 (which-key-mode)
 
 ;; Setup extensions
+(require 'setup-magit)
+(require 'setup-ido)
 (require 'setup-paredit)
 
 ;; Functions (load all files in defuns-dir)

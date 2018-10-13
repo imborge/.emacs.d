@@ -17,7 +17,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (s move-text ace-jump-mode expand-region smex which-key paredit rainbow-delimiters haskell-mode spacemacs-theme doom-themes color-theme-sanityinc-tomorrow yasnippet smartparens restclient magit flycheck css-eldoc clojure-mode-extra-font-locking cider dash)))
+    (diff-hl browse-kill-ring ido-vertical-mode ido-completing-read+ ido-at-point flx-ido flx s move-text ace-jump-mode expand-region smex which-key paredit rainbow-delimiters haskell-mode spacemacs-theme doom-themes color-theme-sanityinc-tomorrow yasnippet smartparens restclient magit flycheck css-eldoc clojure-mode-extra-font-locking cider dash)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

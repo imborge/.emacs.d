@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ magit-status
+ ibuffer
+ smartparens-mode
+ imenu
+ shell
  open-line-below
  mkdir
- comment-line
- magit-status
- comment-or-uncomment-region
- query-replace-regexp
- completion-at-point
 )
 
 ;; ----- smex-data -----
@@ -25,8 +25,12 @@
  (completion-at-point . 1)
  (query-replace-regexp . 4)
  (comment-or-uncomment-region . 1)
- (magit-status . 2)
+ (magit-status . 3)
  (comment-line . 4)
  (mkdir . 1)
  (open-line-below . 1)
+ (shell . 1)
+ (imenu . 2)
+ (smartparens-mode . 2)
+ (ibuffer . 1)
 )

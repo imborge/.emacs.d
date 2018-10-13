@@ -26,7 +26,8 @@
 (global-set-key (kbd "C-c C-k") 'eval-buffer)
 
 ;; Magit
-;; (global-set-key (kbd "C-x m" 'magit-status))
+(global-set-key (kbd "C-x m") 'magit-status-fullscreen)
+(autoload 'magit-status-fullscreen "magit")
 
 ;; Clever newlines
 (global-set-key (kbd "C-o") 'open-line-and-indent)
@@ -46,5 +47,11 @@
 
 ;; Sorting
 (global-set-key (kbd "M-s l") 'sort-lines)
+
+;; Browse the kill ring
+(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
+
+;; Remove suspend keybinding
+(global-unset-key (kbd "C-z"))
 
 (provide 'key-bindings)
