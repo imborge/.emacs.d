@@ -47,8 +47,7 @@
 ;; Install extensions if they are missing
 (defun init--install-packages ()
   (packages-install
-   '(
-     ace-jump-mode
+   '(ace-jump-mode
      browse-kill-ring
      cider
      clojure-mode
@@ -56,10 +55,12 @@
      css-eldoc
      dash
      diff-hl
+     evil
+     evil-paredit
      expand-region
-     flycheck
      flx
      flx-ido
+     flycheck
      haskell-mode
      ido-at-point
      ido-completing-read+
@@ -67,7 +68,7 @@
      magit
      move-text
      paredit
-     ;;projectile
+     projectile
      rainbow-delimiters
      restclient
      s
@@ -98,6 +99,9 @@
 (require 'setup-magit)
 (require 'setup-ido)
 (require 'setup-paredit)
+(require 'setup-haskell)
+(require 'setup-html)
+(require 'setup-clojure)
 
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
@@ -111,5 +115,10 @@
 ;; y/n for yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; smart M-x
 (require 'smex)
 (smex-initialize)
+
+;; Use evil mode by default
+(require 'evil)
+(evil-mode 1)

@@ -1,4 +1,5 @@
 (require 'paredit)
+(require 'smartparens)
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
 (add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
