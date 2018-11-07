@@ -48,6 +48,7 @@
 (defun init--install-packages ()
   (packages-install
    '(ace-jump-mode
+     auctex
      browse-kill-ring
      cider
      clojure-mode
