@@ -77,6 +77,7 @@
      smex
      spacemacs-theme
      which-key
+     yaml-mode
      yasnippet)))
 
 (condition-case nil
