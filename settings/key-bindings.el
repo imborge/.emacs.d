@@ -1,3 +1,4 @@
+(require 'evil)
 ;; Expand region
 (global-set-key (kbd "C-'") 'er/expand-region)
 
@@ -58,5 +59,19 @@
 
 ;; Remove suspend keybinding
 (global-unset-key (kbd "C-z"))
+
+;; Insert chars in evil normal mode
+(evil-define-command my-evil-insert-lambda ()
+  (evil-append 0)
+  (insert "λ")
+  (evil-normal-state))
+
+(evil-define-command my-evil-insert-copyright ()
+  (evil-append 0)
+  (insert "©")
+  (evil-normal-state))
+
+(define-key evil-normal-state-map (kbd "SPC i c l") 'my-evil-insert-lambda)
+(define-key evil-normal-state-map (kbd "SPC i c c") 'my-evil-insert-copyright)
 
 (provide 'key-bindings)
