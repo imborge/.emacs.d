@@ -67,6 +67,7 @@
      ido-completing-read+
      ido-vertical-mode
      magit
+     markdown-mode
      move-text
      paredit
      projectile
@@ -98,6 +99,7 @@
 (which-key-mode)
 
 ;; Setup extensions
+(require 'setup-sql)
 (require 'setup-magit)
 (require 'setup-ido)
 (require 'setup-paredit)
@@ -124,3 +126,6 @@
 ;; Use evil mode by default
 (require 'evil)
 (evil-mode 1)
+
+;; Show column number in status bar
+(setq column-number-mode t)
