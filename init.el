@@ -129,3 +129,8 @@
 
 ;; Show column number in status bar
 (setq column-number-mode t)
+
+;; Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
