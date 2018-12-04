@@ -57,6 +57,8 @@
      dash
      diff-hl
      evil
+     evil-leader
+     evil-org
      evil-paredit
      expand-region
      flx
@@ -106,6 +108,7 @@
 (require 'setup-haskell)
 (require 'setup-html)
 (require 'setup-clojure)
+(require 'setup-css)
 
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
@@ -134,3 +137,5 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(require 'evil-org)
