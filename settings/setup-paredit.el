@@ -25,5 +25,6 @@
     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
 
 (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
+(add-hook 'clojure-mode-hook 'evil-paredit-mode)
 
 (provide 'setup-paredit)

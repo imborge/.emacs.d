@@ -109,6 +109,7 @@
 (require 'setup-html)
 (require 'setup-clojure)
 (require 'setup-css)
+(require 'setup-org)
 
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))

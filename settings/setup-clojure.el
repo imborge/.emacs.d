@@ -32,6 +32,6 @@
 (setq cider-repl-wrap-history t)
 
 ;; enable paredit in your REPL
-;; (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 (provide 'setup-clojure)

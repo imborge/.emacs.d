@@ -71,7 +71,7 @@
   (insert "©")
   (evil-normal-state))
 
-(define-key evil-normal-state-map (kbd "SPC i c l") 'my-evil-insert-lambda)
-(define-key evil-normal-state-map (kbd "SPC i c c") 'my-evil-insert-copyright)
+;; (define-key evil-normal-state-map (kbd "SPC i c l") 'my-evil-insert-lambda)
+;; (define-key evil-normal-state-map (kbd "SPC i c c") 'my-evil-insert-copyright)
 
 (provide 'key-bindings)
