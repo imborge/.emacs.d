@@ -1,142 +1,132 @@
+;;; init --- Emacs initialization file
+;;; Commentary:
+
+;; This file bootstraps the Emacs configuration
+
+;;; Code:
+
+(require 'package)
+
+;; Add melpa to package repos
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+;; Load and activate emacs packages.
 (package-initialize)
 
-;; Better defaults
-(add-to-list 'load-path
-             (expand-file-name "better-defaults" user-emacs-directory))
+(setq custom-file "~/.emacs.d/custom.el")
 
+;; Download the ELPA archive description if needed.
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; Install `use-package` if not installed
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+
+(add-to-list 'load-path "~/.emacs.d/better-defaults")
 (require 'better-defaults)
 
-;; No splash screen
-(setq inhibit-startup-message t)
+(add-to-list 'default-frame-alist '(font . "Iosevka"))
+(set-face-attribute 'default t :font "Iosevka")
 
-;; Set path to deps
-(setq site-lisp-dir
-      (expand-file-name "site-lisp" user-emacs-directory))
+;; Disable blinking cursor
+(blink-cursor-mode 0)
 
-(setq settings-dir
-      (expand-file-name "settings" user-emacs-directory))
+;; Backups
+(setq backup-directory-alist `(("." . "~/.emacs_backup")))
+(setq backup-by-copying t)
 
+;; Packages setup
+(use-package smex
+  :ensure t
+  :bind ("M-x" . smex))
 
-;; Set up load path
-(add-to-list 'load-path settings-dir)
-(add-to-list 'load-path site-lisp-dir)
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
-;; Setup appearance early
-(require 'appearance)
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
 
-;; Settings for currently logged in user
-(setq user-settings-dir
-      (concat user-emacs-directory "users/" user-login-name))
-(add-to-list 'load-path user-settings-dir)
+(use-package paredit
+  :ensure t
+  :diminish paredit-mode
+  :bind ("C-k" . paredit-kill)
+  :init
+  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode))
 
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode))
 
-;; Are we on a mac?
-(setq is-mac (equal system-type 'darwin))
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode +1))
 
-;; Setup packages
-(require 'setup-package)
+(use-package spacemacs-theme
+  :ensure t
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
 
-;; Install extensions if they are missing
-(defun init--install-packages ()
-  (packages-install
-   '(ace-jump-mode
-     auctex
-     browse-kill-ring
-     cider
-     clojure-mode
-     clojure-mode-extra-font-locking
-     css-eldoc
-     dash
-     diff-hl
-     evil
-     evil-leader
-     evil-org
-     evil-paredit
-     expand-region
-     flx
-     flx-ido
-     flycheck
-     haskell-mode
-     ido-at-point
-     ido-completing-read+
-     ido-vertical-mode
-     magit
-     markdown-mode
-     move-text
-     paredit
-     projectile
-     rainbow-delimiters
-     restclient
-     s
-     smartparens
-     smex
-     spacemacs-theme
-     which-key
-     yaml-mode
-     yasnippet)))
+(use-package winum
+  :ensure t
+  :config
+  (winum-mode 1))
 
-(condition-case nil
-    (init--install-packages)
-  (error
-   (package-refresh-contents)
-   (init--install-packages)))
+(use-package flycheck
+  :ensure t
+  :init
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
-;; Turn on recent file mode so that you can more easily switch to
-;; recently edited files when you first start emacs
-(setq recentf-save-file (concat user-emacs-directory ".recentf"))
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 40)
+(use-package haskell-mode
+  :ensure t)
 
-;; which-key
-(require 'which-key)
-(which-key-mode)
+(use-package company
+  :ensure t
+  :defer t
+  :init (global-company-mode))
 
-;; Setup extensions
-(require 'setup-sql)
-(require 'setup-magit)
-(require 'setup-ido)
-(require 'setup-paredit)
-(require 'setup-haskell)
-(require 'setup-html)
-(require 'setup-clojure)
-(require 'setup-css)
-(require 'setup-org)
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (setq dante-repl-command-line '("nix-shell" "--attr" "env" "release.nix" "--run" "cabal repl"))
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode))
 
-;; Functions (load all files in defuns-dir)
-(setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
-(dolist (file (directory-files defuns-dir t "\\w+"))
-  (when (file-regular-p file)
-    (load file)))
+(use-package nix-mode
+  :ensure t)
 
-;; Setup key bindings
-(require 'key-bindings)
+(use-package spaceline
+  :ensure t
+  :pin melpa-stable
+  :init
+  (require 'spaceline-config)
+  :config
+  (spaceline-spacemacs-theme))
 
-;; y/n for yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode)
+  (unless (display-graphic-p)
+    (setq diff-hl-side 'left)
+    (diff-hl-margin-mode)))
 
-;; smart M-x
-(require 'smex)
-(smex-initialize)
-
-;; Use evil mode by default
-(require 'evil)
-(evil-mode 1)
-
-;; Show column number in status bar
-(setq column-number-mode t)
-
-;; Emacs server
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
-(require 'evil-org)
+(provide 'init)
+;;; init.el ends here
