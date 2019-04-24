@@ -48,7 +48,7 @@
         (setq mode-name ,new-name))))
 
 ;; Change font to Iosevka
-(add-to-list 'default-frame-alist '(font . "Iosevka Term"))
-(set-face-attribute 'default t :font "Iosevka Term")
+(add-to-list 'default-frame-alist '(font . "Iosevka"))
+(set-face-attribute 'default t :font "Iosevka")
 
 (provide 'appearance)

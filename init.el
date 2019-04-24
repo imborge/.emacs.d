@@ -26,7 +26,6 @@
 (load custom-file)
 
 ;; Setup appearance early
-(require 'appearance)
 
 ;; Settings for currently logged in user
 (setq user-settings-dir
@@ -88,6 +87,8 @@
   (error
    (package-refresh-contents)
    (init--install-packages)))
+
+(require 'appearance)
 
 ;; Turn on recent file mode so that you can more easily switch to
 ;; recently edited files when you first start emacs
