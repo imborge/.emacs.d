@@ -89,8 +89,7 @@
   :ensure t
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode)
-  (setq flycheck-emacs-lisp-load-path 'inherit)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+  (setq flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package haskell-mode
   :ensure t)
@@ -105,9 +104,10 @@
   :after haskell-mode
   :commands 'dante-mode
   :init
-  (setq dante-repl-command-line '("nix-shell" "--attr" "env" "release.nix" "--run" "cabal repl"))
   (add-hook 'haskell-mode-hook 'flycheck-mode)
-  (add-hook 'haskell-mode-hook 'dante-mode))
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  :config
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (use-package nix-mode
   :ensure t)
