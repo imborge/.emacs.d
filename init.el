@@ -70,6 +70,7 @@
      magit
      markdown-mode
      move-text
+     nix-mode
      paredit
      projectile
      rainbow-delimiters
