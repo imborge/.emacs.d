@@ -1,4 +1,3 @@
-(require 'evil)
 ;; Expand region
 (global-set-key (kbd "C-'") 'er/expand-region)
 
@@ -59,19 +58,12 @@
 
 ;; Remove suspend keybinding
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-x C-z"))
 
-;; Insert chars in evil normal mode
-(evil-define-command my-evil-insert-lambda ()
-  (evil-append 0)
-  (insert "λ")
-  (evil-normal-state))
-
-(evil-define-command my-evil-insert-copyright ()
-  (evil-append 0)
-  (insert "©")
-  (evil-normal-state))
-
-;; (define-key evil-normal-state-map (kbd "SPC i c l") 'my-evil-insert-lambda)
-;; (define-key evil-normal-state-map (kbd "SPC i c c") 'my-evil-insert-copyright)
+;; Multiple cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (provide 'key-bindings)

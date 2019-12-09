@@ -52,13 +52,12 @@
      cider
      clojure-mode
      clojure-mode-extra-font-locking
+     clj-refactor
+     company
      css-eldoc
+     dante
      dash
      diff-hl
-     evil
-     evil-leader
-     evil-org
-     evil-paredit
      expand-region
      flx
      flx-ido
@@ -69,13 +68,13 @@
      ido-vertical-mode
      magit
      markdown-mode
+     multiple-cursors
      move-text
      nix-mode
      paredit
      projectile
      rainbow-delimiters
      restclient
-     s
      smartparens
      smex
      spacemacs-theme
@@ -102,6 +101,8 @@
 (require 'which-key)
 (which-key-mode)
 
+(require 'setup-editing)
+
 ;; Setup extensions
 (require 'setup-sql)
 (require 'setup-magit)
@@ -112,6 +113,7 @@
 (require 'setup-clojure)
 (require 'setup-css)
 (require 'setup-org)
+(require 'setup-javascript)
 
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
@@ -129,10 +131,6 @@
 (require 'smex)
 (smex-initialize)
 
-;; Use evil mode by default
-(require 'evil)
-(evil-mode 1)
-
 ;; Show column number in status bar
 (setq column-number-mode t)
 
@@ -140,5 +138,3 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-
-(require 'evil-org)

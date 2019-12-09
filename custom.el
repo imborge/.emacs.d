@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
     (yasnippet yaml-mode which-key spacemacs-theme smex smartparens restclient rainbow-delimiters projectile move-text markdown-mode magit ido-vertical-mode ido-completing-read+ ido-at-point haskell-mode flycheck flx-ido flx expand-region evil-paredit evil-org evil-leader evil diff-hl dash css-eldoc clojure-mode-extra-font-locking cider browse-kill-ring auctex ace-jump-mode))))

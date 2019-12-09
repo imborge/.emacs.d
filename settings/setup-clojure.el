@@ -1,3 +1,5 @@
+(require 'clj-refactor)
+
 ;; This is useful for working with camel-case tokens, like names of
 ;; Java classes (e.g. JavaClassName)
 (add-hook 'clojure-mode-hook 'subword-mode)
@@ -33,5 +35,11 @@
 
 ;; enable paredit in your REPL
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (clj-refactor-mode 1)
+            (yas-minor-mode 1)
+            (cljr-add-keybindings-with-prefix "C-c C-m")))
 
 (provide 'setup-clojure)
