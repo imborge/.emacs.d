@@ -115,6 +115,10 @@
 (require 'setup-org)
 (require 'setup-javascript)
 
+;; Setup yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
 (dolist (file (directory-files defuns-dir t "\\w+"))

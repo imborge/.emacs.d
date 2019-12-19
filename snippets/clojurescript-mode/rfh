@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: re-frame-http-fx
+# key: rfh
+# --
+(rf/reg-event-fx
+ ::${1:event-name}
+ (fn [{:keys [db]} _]
+   {:db         (assoc-in db [$2] true)
+    :http-xhrio {:method          ${3::post}
+                 :uri             ${4:""}
+                 :timeout         8000
+                 :params          ${5:{}}
+                 :format          (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success      [::$1-success]
+                 :on-failure      [::$1-failure]}}))
+
+(rf/reg-event-db
+ ::$1-success
+ (fn [db [_ data]]
+   (-> db
+       $6)))
+
+(rf/reg-event-db
+ ::$1-failure
+ (fn [db [_ error]]
+   (-> db
+       $7)))
