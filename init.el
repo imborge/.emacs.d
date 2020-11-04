@@ -59,6 +59,7 @@
      dash
      diff-hl
      expand-region
+     fira-code-mode
      flx
      flx-ido
      flycheck
