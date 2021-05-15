@@ -51,8 +51,4 @@
 (add-to-list 'default-frame-alist '(font . "Iosevka"))
 (set-face-attribute 'default t :font "Iosevka")
 
-(require 'fira-code-mode)
-(customize-set-variable 'fira-code-mode-disabled-ligatures '("[]" "x"))
-(add-hook 'prog-mode-hook 'fira-code-mode)
-
 (provide 'appearance)

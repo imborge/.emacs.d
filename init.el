@@ -1,5 +1,3 @@
-(package-initialize)
-
 ;; Better defaults
 (add-to-list 'load-path
              (expand-file-name "better-defaults" user-emacs-directory))
@@ -59,7 +57,6 @@
      dash
      diff-hl
      expand-region
-     fira-code-mode
      flx
      flx-ido
      flycheck
