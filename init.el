@@ -69,6 +69,7 @@
      multiple-cursors
      move-text
      nix-mode
+     org-roam
      paredit
      projectile
      rainbow-delimiters
