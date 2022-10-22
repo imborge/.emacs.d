@@ -69,7 +69,6 @@
      multiple-cursors
      move-text
      nix-mode
-     org-roam
      paredit
      projectile
      rainbow-delimiters
@@ -111,7 +110,6 @@
 (require 'setup-html)
 (require 'setup-clojure)
 (require 'setup-css)
-(require 'setup-org)
 (require 'setup-javascript)
 
 ;; Setup yasnippet
