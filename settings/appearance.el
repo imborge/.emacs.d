@@ -21,7 +21,7 @@
 
 (defun use-default-theme ()
   (interactive)
-  (load-theme 'spacemacs-dark))
+  (load-theme 'spacemacs-light))
 
 (use-default-theme)
 
@@ -48,7 +48,7 @@
         (setq mode-name ,new-name))))
 
 ;; Change font to Iosevka
-(add-to-list 'default-frame-alist '(font . "Iosevka"))
-(set-face-attribute 'default t :font "Iosevka")
+(add-to-list 'default-frame-alist '(font . "Fira Code"))
+(set-face-attribute 'default t :font "Fira Code")
 
 (provide 'appearance)
