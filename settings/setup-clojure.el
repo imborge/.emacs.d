@@ -1,4 +1,8 @@
+;;; setup-clojure.el -- Clojure setup
+;;; Commentary:
+;;; Code:
 (require 'clj-refactor)
+(require 'inf-lisp)
 
 ;; This is useful for working with camel-case tokens, like names of
 ;; Java classes (e.g. JavaClassName)
@@ -46,3 +50,4 @@
 
 (require 'flycheck-clj-kondo)
 (provide 'setup-clojure)
+;;; setup-clojure.el ends here

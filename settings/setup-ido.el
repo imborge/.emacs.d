@@ -1,4 +1,8 @@
+;;; setup-ido.el -- IDO setup
+;;; Commentary:
+;;; Code:
 (require 'ido)
+(require 'magit)
 (ido-mode t)
 
 (setq ido-enable-prefix nil
@@ -40,3 +44,4 @@
 (setq magit-completing-read-function 'magit-ido-completing-read)
 
 (provide 'setup-ido)
+;;; setup-ido.el ends here

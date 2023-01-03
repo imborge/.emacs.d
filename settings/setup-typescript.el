@@ -19,6 +19,7 @@
 (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx))
 
 (defun setup-tide-mode ()
+  "Set up tide-mode."
   (interactive)
   (tide-setup)
   (flycheck-mode +1)

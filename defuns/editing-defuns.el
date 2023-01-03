@@ -352,3 +352,14 @@ region-end is used."
   (while (not (looking-at "}"))
     (join-line -1))
   (back-to-indentation))
+
+(defun insert-package-comments ()
+  (interactive)
+  (save-excursion
+    (let ((start-point (point))
+          (start-text (concat ";;; " (buffer-name) " -- Description\n;;; Commentary:\n;;; Code:\n"))
+          (end-text (concat "\n;;; " (buffer-name) " ends here")))
+      (goto-char (point-min))
+      (insert start-text)
+      (goto-char (point-max))
+      (insert end-text))))

@@ -1,3 +1,6 @@
+;;; appearance.el -- Settings for appearance
+;;; Commentary:
+;;; Code:
 (setq font-lock-maximum-decoration t
       truncate-partial-width-windows nil)
 
@@ -20,13 +23,11 @@
     (add-to-list 'custom-theme-load-path path)))
 
 (defun use-default-theme ()
+  "Load the default theme."
   (interactive)
   (load-theme 'spacemacs-light))
 
 (use-default-theme)
-
-;; Dont defer screen updates when performing operations
-(setq redisplay-dont-pause t)
 
 ;; Highlight matching parentheses when the point is on them
 (show-paren-mode 1)
@@ -42,13 +43,9 @@
 ;; Make zooming affect frame instead of buffers
 ;;(require 'zoom-frm)
 
-(defmacro rename-modeline (package-name mode new-name)
-  `(eval-after-load ,package-name
-     '(defadvice ,mode (after rename-modeline activate)
-        (setq mode-name ,new-name))))
-
 ;; Change font to Iosevka
 (add-to-list 'default-frame-alist '(font . "Fira Code"))
 (set-face-attribute 'default t :font "Fira Code")
 
 (provide 'appearance)
+;;; appearance.el ends here

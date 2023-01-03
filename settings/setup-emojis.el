@@ -1,3 +1,8 @@
+;;; setup-emojis.el -- Emoji setup
+;;; Commentary:
+;;; Code:
+(require 'emojify)
+
 ;; Setup font for emojis
 (when (member "Noto Color Emoji" (font-family-list))
   (set-fontset-font
@@ -9,3 +14,4 @@
 (emojify-set-emoji-styles '(unicode))
 
 (provide 'setup-emojis)
+;;; setup-emojis.el ends here

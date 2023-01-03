@@ -1,3 +1,8 @@
+;;; key-bindings.el -- Keybindings
+;;; Commentary:
+;;; Code:
+
+
 ;; Expand region
 (global-set-key (kbd "C-'") 'er/expand-region)
 
@@ -67,3 +72,4 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (provide 'key-bindings)
+;;; key-bindings.el ends here

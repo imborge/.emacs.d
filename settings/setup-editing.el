@@ -1,3 +1,6 @@
+;;; setup-editing.el -- Editing setup
+;;; Commentary:
+;;; Code:
 (require 'dash)
 
 (setq tab-width 2)
@@ -20,3 +23,4 @@
   (flycheck-pos-tip-mode))
 
 (provide 'setup-editing)
+;;; setup-editing.el ends here

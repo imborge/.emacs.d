@@ -1,5 +1,4 @@
 ;;; setup-web-mode.el -- Web-mode setup
-
 ;;; Commentary:
 ;;; Code:
 (require 'web-mode)

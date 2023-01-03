@@ -1,3 +1,6 @@
+;;; setup-paredit.el -- Description
+;;; Commentary:
+;;; Code:
 (require 'paredit)
 (require 'smartparens)
 
@@ -25,3 +28,5 @@
 ;;     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
 
 (provide 'setup-paredit)
+
+;;; setup-paredit.el ends here

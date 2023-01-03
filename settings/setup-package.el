@@ -1,3 +1,6 @@
+;;; setup-package.el -- Description
+;;; Commentary:
+;;; Code:
 (require 'package)
 (require 'dash)
 
@@ -14,6 +17,7 @@
   (package-refresh-contents))
 
 (defun packages-install (packages)
+  "Install each package in PACKAGES if not already installed."
   (--each packages
           (when (not (package-installed-p it))
             (package-install it)))
@@ -34,3 +38,5 @@ re-downloaded in order to locate PACKAGE."
         (require-package package min-version t)))))
 
 (provide 'setup-package)
+
+;;; setup-package.el ends here

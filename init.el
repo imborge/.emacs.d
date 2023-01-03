@@ -121,7 +121,6 @@
 (require 'setup-magit)
 (require 'setup-ido)
 (require 'setup-paredit)
-(require 'setup-haskell)
 (require 'setup-html)
 (require 'setup-clojure)
 (require 'setup-css)

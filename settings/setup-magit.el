@@ -1,6 +1,10 @@
-;; full screen magit-status
+;;; setup-magit.el -- Magit setup
+;;; Commentary:
+;;; Code:
+(require 'vc-annotate)
 
 (defun magit-status-fullscreen (prefix)
+  "Full screen magit-status.  PREFIX: buffer prefix."
   (interactive "P")
   (magit-status)
   (unless prefix
@@ -16,7 +20,8 @@
 ;; move cursor into position when entering commit message
 
 (defun my/magit-cursor-fix ()
-  (beginning-of-buffer)
+  "Move cursor into position when entering commit message."
+  (goto-char (point-min))
   (when (looking-at "#")
     (forward-line 2)))
 
@@ -25,7 +30,7 @@
 ;; full screen vc-annotate
 
 (defun vc-annotate-quit ()
-  "Restores the previous window configuration and kills the vc-annotate buffer"
+  "Restore the previous window configuration and kill the `vc-annotate` buffer."
   (interactive)
   (kill-buffer)
   (jump-to-register :vc-annotate-fullscreen))
@@ -47,3 +52,4 @@
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 (provide 'setup-magit)
+;;; setup-magit.el ends here
