@@ -1,3 +1,9 @@
+;;; init.el -- imborge's emacs config
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Better defaults
 (add-to-list 'load-path
              (expand-file-name "better-defaults" user-emacs-directory))
@@ -52,14 +58,18 @@
      clojure-mode-extra-font-locking
      clj-refactor
      company
+     company-box
      css-eldoc
      dante
      dash
      diff-hl
+     emojify
      expand-region
      flx
      flx-ido
      flycheck
+     flycheck-clj-kondo
+     flycheck-pos-tip
      haskell-mode
      ido-at-point
      ido-completing-read+
@@ -76,6 +86,11 @@
      smartparens
      smex
      spacemacs-theme
+     tree-sitter
+     tree-sitter-langs
+     tide ;; typescript ide
+     typescript-mode
+     web-mode
      which-key
      yaml-mode
      yasnippet)))
@@ -111,6 +126,8 @@
 (require 'setup-clojure)
 (require 'setup-css)
 (require 'setup-javascript)
+(require 'setup-typescript)
+(require 'setup-emojis)
 
 ;; Setup yasnippet
 (require 'yasnippet)
@@ -139,3 +156,5 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(add-hook 'after-init-hook #'global-flycheck-mode)

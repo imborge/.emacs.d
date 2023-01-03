@@ -40,6 +40,9 @@
           (lambda ()
             (clj-refactor-mode 1)
             (yas-minor-mode 1)
-            (cljr-add-keybindings-with-prefix "C-c C-m")))
+            (cljr-add-keybindings-with-prefix "C-c C-m")
+            (add-hook 'before-save-hook
+                      'cider-format-buffer  t t)))
 
+(require 'flycheck-clj-kondo)
 (provide 'setup-clojure)
