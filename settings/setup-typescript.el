@@ -7,6 +7,7 @@
 (require 'tree-sitter)
 (require 'flycheck)
 (require 'company)
+(require 'tide)
 
 (define-derived-mode typescriptreact-mode typescript-mode
   "TypeScript TSX")
@@ -31,6 +32,10 @@
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
+
+(setq typescript-indent-level 2)
+(setq tide-format-options
+      '(:indentSize 2 :tabSize 2))
 
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)

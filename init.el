@@ -128,6 +128,7 @@
 (require 'setup-javascript)
 (require 'setup-typescript)
 (require 'setup-emojis)
+(require 'setup-web-mode)
 
 ;; Setup yasnippet
 (require 'yasnippet)
