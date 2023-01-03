@@ -53,5 +53,25 @@
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
+(defun my-project-errors ()
+  (interactive)
+  (let* ((error-buffer (get-buffer-create (tide-project-errors-buffer-name)))
+         (error-window (display-buffer error-buffer t)))
+    (select-window error-window nil)
+    (tide-project-errors)))
+
+(eval-after-load 'typescript-mode
+  '(progn
+     (define-key typescript-mode-map (kbd "C-c RET r s") 'tide-rename-symbol)
+     (define-key typescript-mode-map (kbd "C-c RET r f") 'tide-rename-file)
+     (define-key typescript-mode-map (kbd "C-c RET r r") 'tide-refactor)
+     (define-key typescript-mode-map (kbd "C-c RET o i") 'tide-organize-imports)
+     (define-key typescript-mode-map (kbd "C-c RET l r") 'tide-references)
+     (define-key typescript-mode-map (kbd "C-c RET p e") 'my-project-errors)
+     (define-key typescript-mode-map (kbd "C-c RET d l") 'tide-add-tslint-disable-next-line)
+     (define-key typescript-mode-map (kbd "C-c RET C-d") 'tide-documentation-at-point)
+     (define-key typescript-mode-map (kbd "C-c C-f") 'tide-fix)
+     ))
+
 (provide 'setup-typescript)
 ;;; setup-typescript.el ends here
