@@ -3,7 +3,9 @@
 ;;; Code:
 (require 'sql)
 
-(add-hook 'sql-mode-hook (lambda () (sql-set-product 'postgres)))
+(add-hook 'sql-mode-hook (lambda ()
+                           (sql-set-product 'postgres)
+                           (sqlind-minor-mode)))
 
 (provide 'setup-sql)
 

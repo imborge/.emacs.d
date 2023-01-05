@@ -86,6 +86,7 @@
      smartparens
      smex
      spacemacs-theme
+     sql-indent
      tree-sitter
      tree-sitter-langs
      tide ;; typescript ide
