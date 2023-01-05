@@ -4,10 +4,6 @@
 (require 'paredit)
 (require 'smartparens)
 
-(add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
-(add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
-(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
-
 ;; Change nasty paredit keybindings
 ;; (defvar my-nasty-paredit-keybindings-remappings
 ;;   '(("M-s"         "s-s"         paredit-splice-sexp)
@@ -26,6 +22,22 @@
 ;;         (command (car (last it))))
 ;;     (define-key paredit-mode-map (read-kbd-macro original) nil)
 ;;     (define-key paredit-mode-map (read-kbd-macro replacement) command)))
+
+(defun my-paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  ;;
+  (add-hook 'paredit-mode-hook (lambda ()
+                                 (define-key paredit-mode-map (kbd "{") 'paredit-open-curly)
+                                 (define-key paredit-mode-map (kbd "}") 'paredit-close-curly)))
+  (paredit-mode 1))
+
+(add-hook 'prog-mode-hook 'my-paredit-nonlisp)
+(add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
+(add-hook 'cider-repl-mode-hook (lambda () (paredit-mode 1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
 
 (provide 'setup-paredit)
 

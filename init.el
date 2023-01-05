@@ -47,8 +47,8 @@
 ;; Setup packages
 (require 'setup-package)
 
-;; Install extensions if they are missing
 (defun init--install-packages ()
+  "Install packages if they are missing."
   (packages-install
    '(ace-jump-mode
      auctex
@@ -95,6 +95,7 @@
      yaml-mode
      yasnippet)))
 
+;; Install packages if they are missing
 (condition-case nil
     (init--install-packages)
   (error
