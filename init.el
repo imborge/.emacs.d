@@ -57,14 +57,16 @@
      clojure-mode
      clojure-mode-extra-font-locking
      clj-refactor
+     ;;copilot
      company
      company-box
      css-eldoc
      dante
-     dash
      diff-hl
+     editorconfig
      emojify
      expand-region
+     flutter
      flx
      flx-ido
      flycheck
@@ -74,6 +76,9 @@
      ido-at-point
      ido-completing-read+
      ido-vertical-mode
+     lsp-dart
+     lsp-mode
+     lsp-ui
      magit
      markdown-mode
      multiple-cursors
@@ -83,6 +88,7 @@
      projectile
      rainbow-delimiters
      restclient
+     rust-mode
      smartparens
      smex
      spacemacs-theme
@@ -126,10 +132,12 @@
 (require 'setup-html)
 (require 'setup-clojure)
 (require 'setup-css)
+(require 'setup-rust)
 (require 'setup-javascript)
 (require 'setup-typescript)
 (require 'setup-emojis)
 (require 'setup-web-mode)
+(require 'setup-dart)
 
 ;; Setup yasnippet
 (require 'yasnippet)

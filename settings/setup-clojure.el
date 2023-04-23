@@ -40,8 +40,18 @@
 ;; enable paredit in your REPL
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
+(defun integrant-reset ()
+  (interactive)
+  (cider-interactive-eval "(integrant.repl/reset)"))
+
+(defun integrant-reset-all ()
+  (interactive)
+  (cider-interactive-eval "(integrant.repl/reset-all)"))
+
 (add-hook 'clojure-mode-hook
           (lambda ()
+            (define-key clojure-mode-map (kbd "C-,") 'integrant-reset)
+            (define-key clojure-mode-map (kbd "C-c C-,") 'integrant-reset-all)
             (clj-refactor-mode 1)
             (yas-minor-mode 1)
             (cljr-add-keybindings-with-prefix "C-c C-m")
